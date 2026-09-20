@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0a4a2e"/>
-  <rect x="10" y="26" width="44" height="14" rx="2" fill="#061c12" stroke="#c9a227" stroke-width="1.5"/>
-  <text x="32" y="36" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#c9a227">RIMA MFB</text>
-  <path d="M20 22 Q32 10 44 22" stroke="#c9a227" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M16 26 Q32 6 48 26" stroke="#c9a227" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
-</svg>
