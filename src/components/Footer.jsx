@@ -1,39 +1,26 @@
-import { Facebook, Twitter, Instagram, Youtube, ArrowUp, Smartphone } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Youtube, ArrowUp, Smartphone, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
-const footerLinks = {
-  'Products': [
-    'Savings Account',
-    'Current Account',
-    'Fixed Deposit',
-    'Qard Hasan',
-    'Murabaha Finance',
-    'Micro & SME Loans',
-  ],
-  'Digital Banking': [
-    'USSD Banking *737#',
-    'Mobile App (Android)',
-    'Mobile App (iOS)',
-    'Agent Banking',
-    'POS Terminals',
-    'Bill Payments',
+const links = {
+  'Banking': [
+    { label: 'Personal Banking',  href: '/personal' },
+    { label: 'Business Banking',  href: '/business' },
+    { label: 'Loans & Finance',   href: '/loans' },
+    { label: 'Islamic Banking',   href: '/shariah' },
   ],
   'Company': [
-    'About Us',
-    'Islamic Banking',
-    'Success Stories',
-    'Careers',
-    'News & Updates',
-    'Financial Literacy',
+    { label: 'About Us',          href: '/about' },
+    { label: 'Careers',           href: '/careers' },
+    { label: 'Success Stories',   href: '/success-stories' },
+    { label: 'Financial Literacy',href: '/learn' },
   ],
   'Support': [
-    'Help Centre',
-    'FAQs',
-    'Contact Us',
-    'Privacy Policy',
-    'Report Fraud',
-    'Cookie Policy',
+    { label: 'Contact Us',        href: '/contact' },
+    { label: 'Open Account',      href: '/open-account' },
+    { label: 'Apply for Loan',    href: '/loans/apply' },
+    { label: 'Privacy Policy',    href: '/privacy' },
+    { label: 'Report Fraud',      href: '/contact' },
   ],
 }
 
@@ -51,76 +38,63 @@ export default function Footer() {
 
       {/* USSD banner */}
       <div className="bg-rima-green-mid border-b border-rima-gold/20">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <Smartphone size={22} className="text-rima-gold" />
+            <Smartphone size={20} className="text-rima-gold" />
             <div>
-              <p className="text-white font-semibold text-sm">Bank Anytime, Anywhere</p>
-              <p className="text-white/50 text-xs">No internet? No problem. Dial our USSD code on any phone.</p>
+              <p className="text-white font-semibold text-sm">Bank Anytime — No Internet Needed</p>
+              <p className="text-white/40 text-xs">Dial on any phone, any network</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-display text-3xl font-extrabold gold-text tracking-widest">*737#</span>
-            <Link to="/contact" className="btn-gold text-sm px-5 py-2">Get Started</Link>
+            <span className="font-display text-2xl font-extrabold gold-text tracking-widest">*737#</span>
+            <Link to="/open-account" className="btn-gold text-xs px-4 py-2">Open Account</Link>
           </div>
         </div>
       </div>
 
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
-          {/* Brand column */}
-          <div className="col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4 group">
-              <Logo size={40} />
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link to="/" className="flex items-center gap-2.5 mb-4 group">
+              <Logo size={36} />
               <div>
-                <p className="font-display font-bold text-lg text-rima-gold">RIMA MFB</p>
-                <p className="text-xs text-rima-gold/50 tracking-widest uppercase">Made For Us By Us</p>
+                <p className="font-display font-bold text-base text-rima-gold leading-none">RIMA MFB</p>
+                <p className="text-xs text-rima-gold/50 tracking-widest uppercase">Est. 1992</p>
               </div>
             </Link>
-            <p className="text-white/50 text-sm leading-relaxed mb-2 max-w-xs">
-              Rima Microfinance Bank — serving Northern Nigeria since{' '}
-              <span className="text-rima-gold font-semibold">1992</span>.
+            <p className="text-white/45 text-xs leading-relaxed mb-3">
+              CBN Licensed Microfinance Bank serving Northern Nigeria.
             </p>
-            <p className="text-white/35 text-xs mb-2">
-              📍 Gwaranyo LGA, Sokoto State, Nigeria
-            </p>
-            <p className="text-rima-gold/50 italic text-xs mb-5">
-              "Bankin ku — Made For Us By Us"
-            </p>
-
-            {/* Powered by */}
-            <div className="bg-white/5 rounded-xl p-3 mb-5 border border-rima-gold/10">
-              <p className="text-white/30 text-xs uppercase tracking-wider mb-2">Powered By</p>
-              <div className="flex flex-wrap gap-2">
-                {['CuteBanker', 'NIBSS', 'Etranzact'].map(t => (
-                  <span key={t} className="text-rima-gold/70 text-xs font-semibold bg-rima-gold/10 px-2 py-0.5 rounded-md">{t}</span>
-                ))}
-              </div>
+            <div className="flex items-center gap-1.5 text-white/30 text-xs mb-4">
+              <MapPin size={11} className="text-rima-gold/50 flex-shrink-0" />
+              Gwaranyo LGA, Sokoto State
             </div>
-
-            {/* Social icons */}
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a key={label} href={href} aria-label={label}
-                  className="w-9 h-9 rounded-full border border-rima-gold/30 flex items-center justify-center
-                             text-white/50 hover:text-rima-gold hover:border-rima-gold transition-all duration-200">
-                  <Icon size={15} />
+                  className="w-8 h-8 rounded-full border border-rima-gold/25 flex items-center justify-center
+                             text-white/40 hover:text-rima-gold hover:border-rima-gold transition-all duration-200">
+                  <Icon size={13} />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Link columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
+          {Object.entries(links).map(([title, items]) => (
             <div key={title}>
-              <p className="text-rima-gold font-semibold text-sm mb-4 uppercase tracking-wider">{title}</p>
-              <ul className="flex flex-col gap-2.5">
-                {links.map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-white/50 hover:text-rima-gold text-sm transition-colors duration-200">
-                      {link}
-                    </a>
+              <p className="text-rima-gold font-semibold text-xs mb-3 uppercase tracking-wider">{title}</p>
+              <ul className="flex flex-col gap-2">
+                {items.map(item => (
+                  <li key={item.label}>
+                    <Link to={item.href}
+                      className="text-white/45 hover:text-rima-gold text-xs transition-colors duration-200">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -129,22 +103,23 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-rima-gold/15 pt-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-white/30 text-xs space-y-1">
-            <p>© {new Date().getFullYear()} Rima Microfinance Bank Limited. All rights reserved.</p>
-            <p>
-              Licensed by the Central Bank of Nigeria (CBN) ·
-              Headquartered in Gwaranyo LGA, Sokoto State, Nigeria ·
-              Est. 1992
+        <div className="border-t border-rima-gold/10 pt-6 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-white/25 text-xs">
+              © {new Date().getFullYear()} Rima Microfinance Bank Limited · CBN Licensed · NDIC Insured
             </p>
+            <span className="text-white/15 hidden sm:inline">·</span>
+            <Link to="/privacy" className="text-white/30 hover:text-rima-gold text-xs transition-colors">
+              Privacy Policy
+            </Link>
           </div>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-10 h-10 rounded-full border border-rima-gold/30 flex items-center justify-center
-                       text-rima-gold hover:bg-rima-gold hover:text-rima-dark transition-all duration-200"
+            className="w-8 h-8 rounded-full border border-rima-gold/25 flex items-center justify-center
+                       text-rima-gold/60 hover:bg-rima-gold hover:text-rima-dark transition-all duration-200"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={16} />
+            <ArrowUp size={14} />
           </button>
         </div>
       </div>

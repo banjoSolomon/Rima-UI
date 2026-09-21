@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import LanguageToggle from './LanguageToggle'
 import { useLang } from '../context/LanguageContext'
+import GlobalSearch from './GlobalSearch'
 
 export default function Navbar() {
   const [open, setOpen]         = useState(false)
@@ -102,8 +103,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right: Lang toggle + CTAs */}
+        {/* Right: Search + Lang toggle + CTAs */}
         <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <GlobalSearch />
           <LanguageToggle />
           <Link to="/open-account" className="btn-outline-gold text-xs px-4 py-2">{t('nav_login')}</Link>
           <Link to="/open-account" className="btn-gold text-xs px-4 py-2">{t('nav_open')}</Link>
