@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import PageHero from '../components/PageHero'
 import Logo from '../components/Logo'
 import useScrollReveal from '../hooks/useScrollReveal'
+import chairmanImg from '../assets/chairman.png'
 
 const values = [
   {
@@ -402,6 +403,84 @@ export default function AboutPage() {
             </div>
           </div>
         </RevealCard>
+      </section>
+
+      {/* Leadership Team */}
+      <section className="py-20 max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className="text-rima-gold text-xs font-bold tracking-widest uppercase">The People Behind Rima</span>
+          <h2 className="font-display text-4xl font-bold text-white mt-2 mb-3">Our Leadership Team</h2>
+          <div className="divider-gold" />
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {/* Chairman — real photo */}
+          <RevealCard delay={0}>
+            <div className="card-glass overflow-hidden group border border-rima-gold/30">
+              {/* Photo */}
+              <div className="relative h-72 overflow-hidden bg-rima-green-mid">
+                <img
+                  src={chairmanImg}
+                  alt="Alhaji Mustapha Fodio — Chairman, Board of Directors"
+                  className="w-full h-full object-cover object-top
+                             transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-rima-dark/90 via-rima-dark/10 to-transparent" />
+                {/* Chairman badge */}
+                <div className="absolute top-3 left-3 bg-rima-gold text-rima-dark text-xs font-bold px-3 py-1 rounded-full">
+                  Chairman
+                </div>
+              </div>
+              {/* Info */}
+              <div className="p-5">
+                <h3 className="font-display font-bold text-white text-lg leading-tight">
+                  Alhaji Mustapha Fodio
+                </h3>
+                <p className="text-rima-gold/70 text-sm mt-1">Chairman, Board of Directors</p>
+                <div className="flex gap-1 mt-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={11} className="text-rima-gold fill-rima-gold" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </RevealCard>
+
+          {/* Other team members — initials placeholder */}
+          {[
+            { name: 'Malam Ibrahim Danmusa',      role: 'Managing Director / CEO',        initials: 'ID', color: 'from-amber-700 to-yellow-900' },
+            { name: 'Mrs. Fatima Usman-Suleiman',  role: 'Executive Director, Operations', initials: 'FU', color: 'from-teal-700 to-emerald-900' },
+            { name: 'Mr. Yusuf Abdullahi',         role: 'Chief Financial Officer',        initials: 'YA', color: 'from-blue-700 to-blue-900' },
+            { name: 'Hajiya Maryam Garba',         role: 'Head, Retail Banking',           initials: 'MG', color: 'from-rose-700 to-rose-900' },
+            { name: 'Mr. Sani Aliyu',              role: 'Chief Risk Officer',             initials: 'SA', color: 'from-purple-700 to-purple-900' },
+          ].map((member, i) => (
+            <RevealCard key={member.name} delay={(i + 1) * 100}>
+              <div className="card-glass overflow-hidden group">
+                {/* Avatar placeholder */}
+                <div className={`relative h-72 bg-gradient-to-br ${member.color}
+                                 flex items-center justify-center overflow-hidden`}>
+                  <div className="absolute inset-0 pattern-overlay opacity-20" />
+                  <div className="relative w-28 h-28 rounded-full bg-white/10 border-2 border-white/20
+                                   flex items-center justify-center">
+                    <span className="font-display font-bold text-white text-4xl">{member.initials}</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-rima-dark/80 to-transparent" />
+                </div>
+                {/* Info */}
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-white text-lg leading-tight">{member.name}</h3>
+                  <p className="text-rima-gold/70 text-sm mt-1">{member.role}</p>
+                  <div className="flex gap-1 mt-3">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} size={11} className="text-rima-gold fill-rima-gold" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </RevealCard>
+          ))}
+        </div>
       </section>
 
       {/* CBN compliance banner */}
